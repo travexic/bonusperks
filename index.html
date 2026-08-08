@@ -5,129 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promotional Offer</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #64748b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--card);
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 32px 24px;
-            max-width: 440px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .timer-box {
-            display: inline-block;
-            background: #f1f5f9;
-            color: var(--muted);
-            font-size: 0.875rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .timer-box span {
-            color: #dc2626;
-            font-weight: 700;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.025em;
-        }
-
-        p {
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            background-color: var(--primary);
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 14px 20px;
-            border-radius: 6px;
-            transition: background-color 0.15s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .disclaimer {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 16px;
-        }
+        body { background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; text-align: center; }
+        .card { background: #2563eb; padding: 40px; border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .timer { font-size: 1.2rem; font-weight: bold; background: #1d4ed8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
+        h1 { font-size: 1.8rem; margin-bottom: 10px; }
+        p { font-size: 1rem; opacity: 0.9; margin-bottom: 30px; }
+        .btn { display: block; background-color: #ffffff; color: #1e3a8a; font-size: 1.2rem; font-weight: bold; text-decoration: none; padding: 16px; border-radius: 8px; transition: transform 0.1s; }
+        .btn:hover { transform: scale(1.02); }
     </style>
 </head>
 <body>
-
     <div class="card">
-        <div class="timer-box">
-            Offer expires in: <span id="timer">00:30</span>
-        </div>
-
-        <h1>Special Credit Offer</h1>
-        <p>Eligible users can claim a $100 promotional reward credit upon completing registration.</p>
-
-        <a href="https://mh6jk.bemobtrcks.com/click" class="btn">
-            Continue to Offer
-        </a>
-
-        <p class="disclaimer">Terms apply. Verification required.</p>
+        <div class="timer">Offer Expires: <span id="timer">00:30</span></div>
+        <h1>$100 Promotional Reward</h1>
+        <p>Complete account registration to claim your standard $100 promotional credit.</p>
+        <a href="https://mh6jk.bemobtrcks.com/click" class="btn">CLAIM $100 CREDIT NOW</a>
     </div>
-
     <script>
-        let timeLeft = 30;
-        const timerElement = document.getElementById('timer');
-
-        const countdown = setInterval(() => {
-            timeLeft--;
-            let seconds = timeLeft < 10 ? '0' + timeLeft : timeLeft;
-            timerElement.textContent = `00:${seconds}`;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                timerElement.textContent = "00:00";
-            }
+        let t = 30;
+        const timer = document.getElementById('timer');
+        const interval = setInterval(() => {
+            t--;
+            timer.textContent = `00:${t < 10 ? '0' : ''}${t}`;
+            if (t <= 0) clearInterval(interval);
         }, 1000);
     </script>
-
 </body>
 </html>
