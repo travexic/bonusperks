@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Promotional Offer</title>
+    <title>Promotional Offer</title>
     <style>
         :root {
-            --bg-blue: #0f172a;
-            --card-blue: #1e293b;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+            --card-bg: #0f172a;
             --accent-yellow: #f59e0b;
-            --yellow-hover: #d97706;
-            --text-light: #f8fafc;
+            --accent-yellow-hover: #d97706;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
 
@@ -22,8 +22,8 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%);
-            color: var(--text-light);
+            background: var(--bg-gradient);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,21 +31,21 @@
             padding: 20px;
         }
 
-        .card {
-            background-color: var(--card-blue);
+        .container {
+            background-color: var(--card-bg);
             border: 2px solid var(--accent-yellow);
             border-radius: 16px;
-            padding: 36px 24px;
+            padding: 32px 24px;
             max-width: 440px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
         .badge {
             background-color: rgba(245, 158, 11, 0.15);
             color: var(--accent-yellow);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             padding: 6px 14px;
             border-radius: 20px;
@@ -56,143 +56,161 @@
         }
 
         h1 {
-            font-size: 1.75rem;
-            margin-bottom: 10px;
-            color: #ffffff;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 24px;
             line-height: 1.4;
         }
 
-        /* Interactive Unlock Area */
-        .unlock-box {
-            background-color: #0f172a;
-            border: 2px dashed var(--accent-yellow);
-            border-radius: 12px;
-            padding: 24px;
+        /* Interactive Grid Area */
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
             margin-bottom: 24px;
+        }
+
+        .option-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px 10px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: border-color 0.2s, transform 0.1s;
         }
 
-        .unlock-box:hover {
-            background-color: #1a233a;
+        .option-card:hover {
+            border-color: var(--accent-yellow);
+            transform: translateY(-2px);
         }
 
-        .unlock-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
+        .option-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 4px;
         }
 
-        .unlock-text {
-            color: var(--accent-yellow);
-            font-weight: 700;
-            font-size: 1.1rem;
+        .option-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
         }
 
-        /* Revealed Code State (Hidden by default) */
-        .revealed-box {
+        /* Result State (Hidden by Default) */
+        .result-box {
             display: none;
             background-color: rgba(245, 158, 11, 0.1);
-            border: 2px solid var(--accent-yellow);
-            border-radius: 12px;
+            border: 1px solid var(--accent-yellow);
+            border-radius: 8px;
             padding: 16px;
             margin-bottom: 24px;
         }
 
-        .code-display {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
+        .result-title {
             color: var(--accent-yellow);
-            margin-top: 4px;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
         /* Timer Section */
-        .timer-container {
-            font-size: 0.9rem;
+        .timer-bar {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
-        .timer {
+        .timer-bar span {
             color: var(--accent-yellow);
             font-weight: 700;
-            font-size: 1.1rem;
         }
 
-        /* Action Button */
+        /* CTA Button */
         .cta-button {
             display: block;
             width: 100%;
             background-color: var(--accent-yellow);
             color: #0f172a;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
             text-decoration: none;
-            padding: 16px 20px;
+            padding: 16px;
             border-radius: 8px;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
 
         .cta-button:hover {
-            background-color: var(--yellow-hover);
+            background-color: var(--accent-yellow-hover);
             transform: translateY(-1px);
         }
 
-        .footer-terms {
+        .footer {
             font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 20px;
+            margin-top: 16px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
+    <div class="container">
         <span class="badge">Limited Promotion</span>
-        <h1>$50 Promotional Credit</h1>
-        <p class="subtitle">Tap below to unlock your $50 reward bonus code before registration.</p>
+        <h1>$100 Account Credit</h1>
+        <p class="subtitle">Select a promotional tier below to view current registration credit details.</p>
 
-        <!-- Interactive Box -->
-        <div class="unlock-box" id="unlockBox" onclick="revealCode()">
-            <div class="unlock-icon">🎁</div>
-            <div class="unlock-text">TAP TO REVEAL CODE</div>
+        <!-- Selection Area -->
+        <div class="option-grid" id="optionGrid">
+            <div class="option-card" onclick="selectOption('Tier A')">
+                <span class="option-icon">💳</span>
+                <span class="option-label">Option A</span>
+            </div>
+            <div class="option-card" onclick="selectOption('Tier B')">
+                <span class="option-icon">🎁</span>
+                <span class="option-label">Option B</span>
+            </div>
+            <div class="option-card" onclick="selectOption('Tier C')">
+                <span class="option-icon">⭐</span>
+                <span class="option-label">Option C</span>
+            </div>
         </div>
 
-        <!-- Revealed Code Display -->
-        <div class="revealed-box" id="revealedBox">
-            <span style="font-size: 0.85rem; color: var(--text-muted);">YOUR BONUS CODE:</span>
-            <div class="code-display">PROMO50-CREDIT</div>
+        <!-- Selection Result -->
+        <div class="result-box" id="resultBox">
+            <div class="result-title">Selected Option Confirmed</div>
+            <p style="font-size: 0.85rem; margin-top: 4px; color: var(--text-main);">
+                Eligible for $100 promotional credit upon registration.
+            </p>
         </div>
 
-        <!-- Countdown & CTA -->
-        <div class="timer-container">
-            Code Reservation Expires In: <span class="timer" id="timer">10:00</span>
+        <!-- Timer -->
+        <div class="timer-bar">
+            Offer Reservation Expires In: <span id="timer">05:00</span>
         </div>
 
+        <!-- CTA -->
         <a href="https://mh6jk.bemobtrcks.com/click" class="cta-button">
-            REDEEM OFFER NOW
+            CLAIM $100 CREDIT NOW
         </a>
 
-        <p class="footer-terms">Terms apply. Valid for eligible new account registrations only.</p>
+        <div class="footer">
+            Terms and conditions apply. Available to eligible new users only.
+        </div>
     </div>
 
     <script>
-        // Interactive Reveal
-        function revealCode() {
-            document.getElementById('unlockBox').style.display = 'none';
-            document.getElementById('revealedBox').style.display = 'block';
+        function selectOption(tier) {
+            document.getElementById('optionGrid').style.display = 'none';
+            document.getElementById('resultBox').style.display = 'block';
         }
 
-        // 10-Minute Timer Logic
-        let duration = 10 * 60;
-        const timerDisplay = document.getElementById('timer');
+        // 5-Minute Timer
+        let duration = 5 * 60;
+        const timerElement = document.getElementById('timer');
 
         const countdown = setInterval(() => {
             let minutes = Math.floor(duration / 60);
@@ -201,11 +219,11 @@
             minutes = minutes < 10 ? '0' + minutes : minutes;
             seconds = seconds < 10 ? '0' + seconds : seconds;
 
-            timerDisplay.textContent = `${minutes}:${seconds}`;
+            timerElement.textContent = `${minutes}:${seconds}`;
 
             if (--duration < 0) {
                 clearInterval(countdown);
-                timerDisplay.textContent = "00:00";
+                timerElement.textContent = "00:00";
             }
         }, 1000);
     </script>
