@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Promotional Offer</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #dc2626;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Top Notification Banner */
+        .banner {
+            width: 100%;
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .timer-badge {
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 40px auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 36px 28px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        /* Value Highlight Box */
+        .value-box {
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .value-box ul {
+            list-style: none;
+        }
+
+        .value-box li {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .value-box li:last-child {
+            margin-bottom: 0;
+        }
+
+        .value-box li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Big CTA Button */
+        .cta-button {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 18px 24px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Notification Bar with Timer -->
+    <div class="banner">
+        Limited Time Promotion — Offer Expires In: <span class="timer-badge" id="timer">00:30</span>
+    </div>
+
+    <!-- Main Card Content -->
+    <div class="container">
+        <span class="badge">Exclusive Promotional Offer</span>
+        <h1>Claim Your $100 Welcome Credit</h1>
+        <p class="subtitle">Complete registration today to qualify for your instant promotional reward balance.</p>
+
+        <div class="value-box">
+            <ul>
+                <li>Instant $100 account credit applied upon verification</li>
+                <li>No hidden maintenance or activation fees</li>
+                <li>Fast, simple 2-minute registration process</li>
+            </ul>
+        </div>
+
+        <!-- Call to Action Link -->
+        <a href="YOUR_OFFER_URL_HERE" class="cta-button" id="cta">
+            CLAIM YOUR $100 CREDIT NOW
+        </a>
+
+        <p class="footer-note">Terms and conditions apply. Limited to one offer per user.</p>
+    </div>
+
+    <!-- Timer JavaScript -->
+    <script>
+        let timeLeft = 30;
+        const timerElement = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            
+            let seconds = timeLeft < 10 ? '0' + timeLeft : timeLeft;
+            timerElement.textContent = `00:${seconds}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElement.textContent = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
