@@ -3,32 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promotional Offer</title>
+    <title>Exclusive Promotional Offer</title>
     <style>
-        body { background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; text-align: center; }
-        .card { background: #2563eb; padding: 40px; border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .timer { font-size: 1.2rem; font-weight: bold; background: #1d4ed8; padding: 8px 16px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
-        h1 { font-size: 1.8rem; margin-bottom: 10px; }
-        p { font-size: 1rem; opacity: 0.9; margin-bottom: 30px; }
-        .btn { display: block; background-color: #ffffff; color: #1e3a8a; font-size: 1.2rem; font-weight: bold; text-decoration: none; padding: 16px; border-radius: 8px; transition: transform 0.1s; }
-        .btn:hover { transform: scale(1.02); }
+        :root {
+            --bg-blue: #0f172a;
+            --card-blue: #1e293b;
+            --accent-yellow: #f59e0b;
+            --yellow-hover: #d97706;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: var(--card-blue);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 16px;
+            padding: 36px 24px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(245, 158, 11, 0.2);
+        }
+
+        .badge {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: var(--accent-yellow);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        /* Interactive Unlock Area */
+        .unlock-box {
+            background-color: #0f172a;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .unlock-box:hover {
+            background-color: #1a233a;
+        }
+
+        .unlock-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .unlock-text {
+            color: var(--accent-yellow);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Revealed Code State (Hidden by default) */
+        .revealed-box {
+            display: none;
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .code-display {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-yellow);
+            margin-top: 4px;
+        }
+
+        /* Timer Section */
+        .timer-container {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .timer {
+            color: var(--accent-yellow);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Action Button */
+        .cta-button {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-yellow);
+            color: #0f172a;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 16px 20px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: var(--yellow-hover);
+            transform: translateY(-1px);
+        }
+
+        .footer-terms {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <div class="timer">Offer Expires: <span id="timer">00:30</span></div>
-        <h1>$100 Promotional Reward</h1>
-        <p>Complete account registration to claim your standard $100 promotional credit.</p>
-        <a href="https://mh6jk.bemobtrcks.com/click" class="btn">CLAIM $100 CREDIT NOW</a>
+        <span class="badge">Limited Promotion</span>
+        <h1>$50 Promotional Credit</h1>
+        <p class="subtitle">Tap below to unlock your $50 reward bonus code before registration.</p>
+
+        <!-- Interactive Box -->
+        <div class="unlock-box" id="unlockBox" onclick="revealCode()">
+            <div class="unlock-icon">🎁</div>
+            <div class="unlock-text">TAP TO REVEAL CODE</div>
+        </div>
+
+        <!-- Revealed Code Display -->
+        <div class="revealed-box" id="revealedBox">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">YOUR BONUS CODE:</span>
+            <div class="code-display">PROMO50-CREDIT</div>
+        </div>
+
+        <!-- Countdown & CTA -->
+        <div class="timer-container">
+            Code Reservation Expires In: <span class="timer" id="timer">10:00</span>
+        </div>
+
+        <a href="https://mh6jk.bemobtrcks.com/click" class="cta-button">
+            REDEEM OFFER NOW
+        </a>
+
+        <p class="footer-terms">Terms apply. Valid for eligible new account registrations only.</p>
     </div>
+
     <script>
-        let t = 30;
-        const timer = document.getElementById('timer');
-        const interval = setInterval(() => {
-            t--;
-            timer.textContent = `00:${t < 10 ? '0' : ''}${t}`;
-            if (t <= 0) clearInterval(interval);
+        // Interactive Reveal
+        function revealCode() {
+            document.getElementById('unlockBox').style.display = 'none';
+            document.getElementById('revealedBox').style.display = 'block';
+        }
+
+        // 10-Minute Timer Logic
+        let duration = 10 * 60;
+        const timerDisplay = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            let minutes = Math.floor(duration / 60);
+            let seconds = duration % 60;
+
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            timerDisplay.textContent = `${minutes}:${seconds}`;
+
+            if (--duration < 0) {
+                clearInterval(countdown);
+                timerDisplay.textContent = "00:00";
+            }
         }, 1000);
     </script>
+
 </body>
 </html>
